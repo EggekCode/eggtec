@@ -23,12 +23,6 @@ const app = express();
 app.use(cors);
 app.use(express.json());
 
-app.get('/', (request, response) => {
-  return response.json({
-    message: 'ok 🚀',
-  });
-});
-
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
