@@ -25,16 +25,18 @@ const Users = new Schema(
         name: String,
       },
     ],
-    favorites: {
-      project: {
-        type: Schema.Types.ObjectId,
-        ref: 'Projects',
+    favorites: [
+      {
+        project: {
+          type: Schema.Types.ObjectId,
+          ref: 'Projects',
+        },
+        finished: {
+          type: Boolean,
+          default: false,
+        },
       },
-      finished: {
-        type: Boolean,
-        default: false,
-      },
-    },
+    ],
   },
   {
     timestamps: true,
