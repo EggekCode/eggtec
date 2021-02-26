@@ -3,7 +3,6 @@ module.exports = {
     "next/babel"
   ],
   "plugins": [
-    "inline-react-svg",
     [
       "styled-components",
       {
