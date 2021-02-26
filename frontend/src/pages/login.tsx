@@ -2,15 +2,18 @@ import Head from 'next/head';
 
 import { LoginContainer } from '../global/css/login.styles';
 
-const Home = () => {
+import EggTec from '../global/assets/eggs.svg';
+
+function Home() {
   return (
     <LoginContainer>
       <Head>
-        <title>DevCode | Login</title>
+        <title>Eggtec | Login</title>
       </Head>
-      <h1>Login</h1>
+      <h1>Entre agora</h1>
+      <EggTec />
     </LoginContainer>
-  )
+  );
 }
 
 export default Home;

@@ -4,6 +4,7 @@ import Document, {
   DocumentInitialProps,
   DocumentContext,
   Html,
+  Head,
   Main,
   NextScript
 } from 'next/document';
@@ -40,7 +41,11 @@ export default class MyDocument extends Document {
 
   render(): JSX.Element {
     return (
-      <Html lang="en">
+      <Html lang="pt">
+        <Head>
+          {this.props.styles}
+          <link rel="icon" href="https://avatars.githubusercontent.com/u/79222890?s=200&v=4" />
+        </Head>
         <body>
           <Main />
           <NextScript />

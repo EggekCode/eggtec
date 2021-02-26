@@ -6,6 +6,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
     box-sizing: border-box;
   }
+  @font-face {
+     font-family: 'Segoe';
+     src: url('./fonts/Segoe.otf');
+  }
 `;
 
 export default GlobalStyle;

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import {  } from 'next/app';
+import { AppProps } from 'next/app';
 
 
 import { ThemeProvider } from 'styled-components';

@@ -2,11 +2,16 @@
     "env": {
         "browser": true,
         "es2021": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:@typescript-eslint/recommended",
+        "prettier/@typescript-eslint",
+        "prettier/airbnb",
+        "prettier/react"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -21,5 +26,21 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "space-before-function-paren": "off",
+        "react/prop-types": "off",
+        "react-in-jsx-scope": "off",
+        "no-undef": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".svg"
+                ]
+            }
+        ],
+        "skipBlankLines": true,
+        "ignoreComments": true
     }
 }
