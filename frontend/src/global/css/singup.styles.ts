@@ -83,11 +83,61 @@ export const SingupContainer = styled.main`
       flex-direction: column;
       justify-content: flex-start;
       margin: 20px auto;
-      div{
+      >div{
         width: 100%;
         display: flex;
         align-items: center;
         position: relative;
+        margin-top: 20px;
+        label{
+          font-family: Inter, sans-serif;
+          font-size: 13px;
+          position: absolute;
+          top: 10px;
+          left: 14px;
+          color: #757575;
+          z-index: 30;
+        }
+        >div{
+          display: block;
+          width: 100%;
+          cursor: pointer;
+          border-radius: 5px;
+          background: #FFF;
+          overflow: hidden;
+          padding: 9px 10px;
+          ::before, ::after, svg, input{
+            display: none;
+          }
+          :hover, :focus{
+            background: #FFF;
+          }
+          >div{
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            background: #FFF!important;
+            overflow: auto;
+            padding: 0px!important;
+            >div:first-child{
+              width: 100%;
+              max-width: 400px;
+              background: #FFF;
+              margin: 2px;
+              padding: 0px!important;
+              >div{
+                div{
+                  background: ${props => props.theme.colors.primary};
+                  span{
+                    color: #FFF;
+                    font-size: 12px;
+                  }
+                }
+              }
+            }
+          }
+        }
         input{
           width: 100%;
           padding: 9px 14px;
@@ -130,6 +180,11 @@ export const SingupContainer = styled.main`
         :hover{
           background: ${props => props.theme.colors.ton};
         }
+      }
+      button:nth-child(2){
+        border: 2px solid #7C7D7F;
+        background: transparent;
+        color: #7C7D7F;
       }
       div{
         padding: 20px 0px;

@@ -12,6 +12,7 @@ const stepper = createMuiTheme({
   },
   typography: {
     fontFamily: 'Inter, sans-serif',
+    fontSize: 14,
   },
 });
 

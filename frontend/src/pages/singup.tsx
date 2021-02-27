@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import Img from 'react-svg-inline';
 
-import { Step, StepLabel, Stepper, ThemeProvider } from '@material-ui/core';
+import { Chip, Input, MenuItem, Select, Step, StepLabel, Stepper, Theme, ThemeProvider, useTheme } from '@material-ui/core';
 
 import { SingupContainer } from '../global/css/singup.styles';
 import favicon from '../global/assets/ts/favicon';
@@ -21,6 +21,41 @@ const steps = [
   },
 ];
 
+const techs = [
+  'JavaScript',
+  'Elixir',
+  'Java',
+  'C#',
+  '.NET',
+  'React Native',
+  'Node.js',
+  'ReactJS',
+  'JavaScript',
+  'Elixir',
+  'Next.js',
+  'Nest.js',
+  'Python',
+  'Django',
+  'PHP',
+  'Ruby',
+  'Laravel',
+  'Vue.js',
+  'Shell',
+  'Typescript',
+  'Git',
+  'GitHub',
+  'CSS',
+  'HTML',
+];
+
+function getStyles(tech: string, arrayTechs: string[], theme: Theme) {
+  return {
+    fontWeight:
+      arrayTechs.indexOf(tech) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
 
 const Singup = () => {
   const [step, setStep] = useState(0);
@@ -31,6 +66,26 @@ const Singup = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [job, setJob] = useState('');
+
+  const theme = useTheme();
+
+  const [arrayTechs, setArrayTechs] = useState<string[]>([]);
+
+  const handleChange = (e: ChangeEvent<{ value: unknown }>) => {
+    setArrayTechs(e.target.value as string[]);
+  };
+
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+  };
 
   return (
     <SingupContainer>
@@ -90,7 +145,7 @@ const Singup = () => {
                 <footer>
                   <button>Next</button>
                   <div>
-                    <Link href='/login'>Log in</Link>
+                    <Link href='/login'>Log in to your account</Link>
                   </div>
                 </footer>
               </form>
@@ -98,9 +153,49 @@ const Singup = () => {
               <form>
                 <div>
                   <div>
-                    <input />
+                    <input placeholder='Job' />
+                  </div>
+                  <div>
+                    <ThemeProvider theme={stepper}>
+                      {
+                        (arrayTechs.length === 0)
+                          ?
+                          <label>Techs</label>
+                          :
+                          <></>
+                      }
+                      <Select
+                        multiple
+                        value={arrayTechs}
+                        onChange={handleChange}
+                        input={
+                          <Input />
+                        }
+                        renderValue={(selected) => (
+                          <div>
+                            {(selected as string[]).map((value) => (
+                              <Chip key={value} label={value} color='primary' />
+                            ))}
+                          </div>
+                        )}
+                        MenuProps={MenuProps}
+                      >
+                        {techs.map((name) => (
+                          <MenuItem key={name} value={name} style={getStyles(name, arrayTechs, theme)}>
+                            {name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </ThemeProvider>
                   </div>
                 </div>
+                <footer>
+                  <button>Finish</button>
+                  <button type='button' onClick={() => setStep(0)}>Voltar</button>
+                  <div>
+                    <Link href='/login'>Log in to your account</Link>
+                  </div>
+                </footer>
               </form>
           }
         </ThemeProvider>
