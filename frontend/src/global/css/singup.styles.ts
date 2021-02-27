@@ -1,26 +1,40 @@
 import styled from 'styled-components';
 
-export const LoginContainer = styled.main`
+export const SingupContainer = styled.main`
   width: 100vw;
   height: 100vh;
-  align-items: center;
-  justify-content: center;
-  display: grid;
-  grid-template-columns: 60vw 40vw;
   background: rgb(17,17,28);
   background: linear-gradient(87deg, rgba(17,17,28,1) 0%, rgba(50,50,75,1) 100%);
+  display: grid;
+  grid-template-columns: 60vw 40vw;
   @media(max-width: 768px) {
     display: block;
   };
-  form:first-child{
+  >main{
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-evenly;
+  }
+  >div:last-child{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     padding: 20px;
-    >header{
+    @media(max-width: 768px){
+      display: none;
+    }
+    svg{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  header{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    section{
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -54,12 +68,22 @@ export const LoginContainer = styled.main`
       }
     }
     >div{
+      background: transparent;
+      >div:nth-child(2) >span{
+        border: 2px solid #181824;
+        background-color: #181824;
+      }
+    }
+  }
+  form{
+    >div{
       width: 100%;
       max-width: 400px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      >div:first-child div{
+      margin: 20px auto;
+      div{
         width: 100%;
         display: flex;
         align-items: center;
@@ -81,7 +105,7 @@ export const LoginContainer = styled.main`
         svg{
           position: absolute;
           width: 22px;
-          top: 22px;
+          top: 26px;
           right: 10px;
         }
       }
@@ -125,17 +149,5 @@ export const LoginContainer = styled.main`
       }
     }
   }
-  >div:last-child{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    padding: 20px;
-    @media(max-width: 768px){
-      display: none;
-    }
-    svg{
-      width: 100%;
-      height: 100%;
-    }
-  }
 `;
+
