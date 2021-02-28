@@ -1,4 +1,5 @@
 import Users from '../schemas/Users';
+import { hash } from 'bcryptjs';
 
 interface Request {
   name: string;
@@ -28,7 +29,9 @@ export default class CreateUserService {
       throw new Error('Usuário ja cadastrado.');
     }
 
-    const user = await Users.create({ name, email, password, job, techs });
+    const passwordHash = await hash(password, 8);
+
+    const user = await Users.create({ name, email, password: passwordHash, job, techs });
 
     return user;
   }
