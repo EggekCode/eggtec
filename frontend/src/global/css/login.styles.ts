@@ -9,7 +9,7 @@ export const LoginContainer = styled.main`
   grid-template-columns: 60vw 40vw;
   background: rgb(17,17,28);
   background: linear-gradient(87deg, rgba(17,17,28,1) 0%, rgba(50,50,75,1) 100%);
-  @media(max-width: 768px) {
+  @media(max-width: 768px){
     display: block;
   };
   form:first-child{
@@ -20,6 +20,9 @@ export const LoginContainer = styled.main`
     justify-content: space-around;
     align-items: center;
     padding: 20px;
+    @media(max-width: 600px){
+      justify-content: space-between;
+    }
     >header{
       display: flex;
       flex-direction: column;
@@ -34,12 +37,19 @@ export const LoginContainer = styled.main`
         svg{
           width: 55px;
           margin-right: 10px;
+          @media(max-width: 600px){
+            width: 45px;
+            margin-right: 20px;
+          }
         }
         h1{
           font-family: Hind, sans-serif;
           font-weight: 500;
           font-size: 28px;
           color: ${props => props.theme.colors.primary};
+          @media(max-width: 600px){
+            font-size: 25px;
+          }
         }
       }
       p{
@@ -48,8 +58,7 @@ export const LoginContainer = styled.main`
         color: #7C7D7F;
         margin: 5px 0px;
         @media(max-width: 540px) {
-          text-align: center;
-          margin-top: 30px;
+          display: none;
         };
       }
     }
@@ -81,7 +90,7 @@ export const LoginContainer = styled.main`
         svg{
           position: absolute;
           width: 22px;
-          top: 22px;
+          top: 27px;
           right: 10px;
         }
       }
@@ -105,6 +114,21 @@ export const LoginContainer = styled.main`
         border: 2px solid transparent;
         :hover{
           background: ${props => props.theme.colors.ton};
+        }
+      }
+      button:last-child{
+        background: #1D1D1E;
+        font-size: 13.4px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        :focus{
+          border-color: #FFF;
+        }
+        >svg{
+          fill: #FFF;
+          width: 24px;
+          height: 24px;
         }
       }
       div{

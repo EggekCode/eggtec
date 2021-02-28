@@ -88,7 +88,7 @@ export const SingupContainer = styled.main`
         display: flex;
         align-items: center;
         position: relative;
-        margin-top: 20px;
+        margin-top: 18px;
         label{
           font-family: Inter, sans-serif;
           font-size: 13px;
@@ -142,7 +142,6 @@ export const SingupContainer = styled.main`
           width: 100%;
           padding: 9px 14px;
           border-radius: 5px;
-          margin-top: 18px;
           border: 2px solid transparent;
           background: #FFF;
           transition: all 0.3s;
@@ -155,7 +154,7 @@ export const SingupContainer = styled.main`
         svg{
           position: absolute;
           width: 22px;
-          top: 26px;
+          top: 9px;
           right: 10px;
         }
       }
