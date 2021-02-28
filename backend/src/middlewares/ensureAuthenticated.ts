@@ -21,7 +21,7 @@ export default function ensureAuthenticated(
   const [, token] = authHeader.split(' ');
 
   try {
-    const decoded = verify(token, 'n7d843bd4t3b434');
+    const decoded = verify(token, `${process.env.TOKEN}`);
 
     const { sub } = decoded as TokenPayload;
 

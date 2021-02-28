@@ -28,7 +28,7 @@ class CreateSessionService {
       throw new Error('Incorrect email/password combination');
     }
 
-    const token = sign({}, 'n7d843bd4t3b434', {
+    const token = sign({}, `${process.env.TOKEN}`, {
       subject: user.id,
       expiresIn: '1d',
     });

@@ -15,26 +15,25 @@ const mongodbOptions: ConnectOptions = {
   useUnifiedTopology: true,
 };
 
-connect(mongodbUri, mongodbOptions, () => {
-  // eslint-disable-next-line no-console
-  console.log('db connected');
-});
-
 const app = express();
 
-app.use(cors);
+connect(mongodbUri, mongodbOptions, () => {
+  console.log('DB Connected');
+});
+
+app.use(cors());
 app.use(express.json());
-app.use(routes);
 
 app.get('/', (request, response) => {
-  return response.json({
-    message: 'server runing 🚀',
+  return response.status(200).json({
+    message: 'Server running 🚀',
   });
 });
 
-const port = process.env.PORT || 3000;
+app.use('/api', routes);
+
+const port = process.env.PORT;
 
 app.listen(port, () => {
-  // eslint-disable-next-line no-console
-  console.log(`server running on http://localhost:${port} 🚀`);
+  console.log(`Server running on http://localhost:${port} 🚀`);
 });

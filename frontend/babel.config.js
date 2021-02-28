@@ -10,7 +10,6 @@ module.exports = {
         "displayName": true,
         "preprocess": false
       },
-      "inline-svg-react"
     ],
   ],
 };
