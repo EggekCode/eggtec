@@ -19,7 +19,7 @@ class CreateSessionService {
     const user = await Users.findOne({ email });
 
     if (!user) {
-      throw new Error('Incorrect email/password combination');
+      throw new Error('Incorrect email/password combination email');
     }
 
     const passwordMatched = await compare(password, user.password);
