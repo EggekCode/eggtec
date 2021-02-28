@@ -144,6 +144,7 @@ export const LoginContainer = styled.main`
           transition: all 0.3s;
           :hover{
             text-decoration: underline;
+            color: #FFF;
           }
         }
       }

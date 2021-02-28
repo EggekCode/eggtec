@@ -37,6 +37,7 @@ const techs = [
   'Python',
   'Django',
   'PHP',
+  'GO',
   'Ruby',
   'Laravel',
   'Vue.js',
@@ -150,10 +151,13 @@ const Singup = () => {
                 </footer>
               </form>
               :
-              <form>
+              <form onSubmit={e => {
+                e.preventDefault();
+                setStep(2);
+              }}>
                 <div>
                   <div>
-                    <input placeholder='Job' />
+                    <input placeholder='Job' value={job} onChange={e => setJob(e.target.value)} />
                   </div>
                   <div>
                     <ThemeProvider theme={stepper}>

@@ -182,8 +182,11 @@ export const SingupContainer = styled.main`
       }
       button:nth-child(2){
         border: 2px solid #7C7D7F;
-        background: transparent;
-        color: #7C7D7F;
+        background: #7C7D7F;
+        color: #FFF;
+        :hover{
+          border-color: #FFF;
+        }
       }
       div{
         padding: 20px 0px;
@@ -198,6 +201,7 @@ export const SingupContainer = styled.main`
           transition: all 0.3s;
           :hover{
             text-decoration: underline;
+            color: #FFF;
           }
         }
       }
