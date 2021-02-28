@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
   }
   ::-webkit-scrollbar{
     width: 7px;
-    height: 5px;
+    height: 0px;
   }
 `;
 

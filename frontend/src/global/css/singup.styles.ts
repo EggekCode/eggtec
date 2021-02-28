@@ -83,6 +83,9 @@ export const SingupContainer = styled.main`
       flex-direction: column;
       justify-content: flex-start;
       margin: 20px auto;
+      >div:first-child >div >div{
+          margin-left: 5px;
+      }
       >div{
         width: 100%;
         display: flex;
@@ -120,6 +123,9 @@ export const SingupContainer = styled.main`
             background: #FFF!important;
             overflow: auto;
             padding: 0px!important;
+            font-size: 13px;
+            color: #757575;
+            font-family: Inter, sans-serif;
             >div:first-child{
               width: 100%;
               max-width: 400px;

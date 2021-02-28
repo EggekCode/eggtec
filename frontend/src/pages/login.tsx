@@ -26,7 +26,7 @@ const Home: FC = () => {
         <header>
           <div>
             <Img svg={favicon} />
-            <h1>Welcome Back</h1>
+            <h1>Welcome back</h1>
           </div>
           <p>Enjoy the projects of this platform made especially for developers 💙</p>
         </header>

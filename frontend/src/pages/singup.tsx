@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 import Img from 'react-svg-inline';
 
@@ -59,7 +59,7 @@ function getStyles(tech: string, arrayTechs: string[], theme: Theme) {
 }
 
 const Singup = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
 
   const [visiblePassword, setVisiblePassword] = useState('password');
   const [emailFocus, setEmailFocus] = useState(false);
@@ -67,7 +67,7 @@ const Singup = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
-  const [job, setJob] = useState('');
+  const [job, setJob] = useState('Job');
 
   const theme = useTheme();
 
@@ -87,6 +87,15 @@ const Singup = () => {
       },
     },
   };
+
+  const onCreateAccount = () => {
+
+  };
+
+  const onChangeJob = (e: React.ChangeEvent<{ value: unknown }>) => {
+    setJob(e.target.value as string);
+  };
+
 
   return (
     <SingupContainer>
@@ -118,6 +127,7 @@ const Singup = () => {
               <form onSubmit={e => {
                 e.preventDefault();
                 setStep(1);
+                onCreateAccount();
               }}>
                 <div>
                   <div>
@@ -157,7 +167,14 @@ const Singup = () => {
               }}>
                 <div>
                   <div>
-                    <input placeholder='Job' value={job} onChange={e => setJob(e.target.value)} />
+                    <label>{job === 'Job' ? 'Job' : ''}</label>
+                    <Select value={job} onChange={onChangeJob}>
+                      <MenuItem value='Front End Developer'>Front End Developer</MenuItem>
+                      <MenuItem value='Back End Developer'>Back End Developer</MenuItem>
+                      <MenuItem value='UI/UX Design'>UI/UX Design</MenuItem>
+                      <MenuItem value='FullStack Developer'>FullStack Developer</MenuItem>
+                      <MenuItem value='Test Analyst'>Test Analyst</MenuItem>
+                    </Select>
                   </div>
                   <div>
                     <ThemeProvider theme={stepper}>
