@@ -24,8 +24,8 @@ connect(mongodbUri, mongodbOptions, () => {
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  return res.status(200).json({
+app.get('/', (request, response) => {
+  return response.status(200).json({
     message: 'Server running 🚀',
   });
 });

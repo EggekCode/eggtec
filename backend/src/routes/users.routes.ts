@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import Users from '../schemas/Users';
 
 import CreateUserService from '../services/CreateUserService';
 
@@ -20,6 +21,16 @@ usersRouter.post('/', async (request, response) => {
     });
   }
 
+});
+
+usersRouter.get('/', async (request, response) => {
+  try {
+    const users = await Users.find();
+
+    return response.json(users);
+  } catch (error) {
+    return response.status(404).json(error);
+  }
 });
 
 export default usersRouter;

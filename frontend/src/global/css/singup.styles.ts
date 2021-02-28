@@ -124,7 +124,7 @@ export const SingupContainer = styled.main`
             overflow: auto;
             padding: 0px!important;
             font-size: 13px;
-            color: #757575;
+            color: #000;
             font-family: Inter, sans-serif;
             >div:first-child{
               width: 100%;

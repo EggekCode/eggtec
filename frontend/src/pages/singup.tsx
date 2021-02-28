@@ -1,8 +1,10 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import Img from 'react-svg-inline';
+import axios from 'axios';
 
 import { Chip, Input, MenuItem, Select, Step, StepLabel, Stepper, Theme, ThemeProvider, useTheme } from '@material-ui/core';
 
@@ -10,7 +12,6 @@ import { SingupContainer } from '../global/css/singup.styles';
 import favicon from '../global/assets/ts/favicon';
 import stepper from '../global/themes/stepper';
 import eggs from '../global/assets/ts/eggs';
-import Link from 'next/link';
 
 const steps = [
   {
@@ -59,7 +60,7 @@ function getStyles(tech: string, arrayTechs: string[], theme: Theme) {
 }
 
 const Singup = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
 
   const [visiblePassword, setVisiblePassword] = useState('password');
   const [emailFocus, setEmailFocus] = useState(false);
@@ -88,8 +89,21 @@ const Singup = () => {
     },
   };
 
-  const onCreateAccount = () => {
-
+  const onCreateAccount = async () => {
+    if (job !== 'Job' || arrayTechs.length !== 0) {
+      try {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVICE}api/users`, {
+          name,
+          email,
+          password,
+          job,
+          techs: arrayTechs,
+        }); 
+        console.log(response);
+      } catch (error) {
+        
+      }
+    }
   };
 
   const onChangeJob = (e: React.ChangeEvent<{ value: unknown }>) => {
@@ -127,7 +141,6 @@ const Singup = () => {
               <form onSubmit={e => {
                 e.preventDefault();
                 setStep(1);
-                onCreateAccount();
               }}>
                 <div>
                   <div>
@@ -164,6 +177,7 @@ const Singup = () => {
               <form onSubmit={e => {
                 e.preventDefault();
                 setStep(2);
+                onCreateAccount();
               }}>
                 <div>
                   <div>

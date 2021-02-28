@@ -28,9 +28,7 @@ const Users = new Schema(
     },
     techs: [
       {
-        name: {
-          type: String,
-        },
+        type: String,
       },
     ],
     favorites: [
