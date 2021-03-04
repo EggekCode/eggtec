@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { opacity } from '../animations/animations';
 
 export const SingupContainer = styled.main`
   width: 100vw;
@@ -77,6 +78,7 @@ export const SingupContainer = styled.main`
     }
   }
   form{
+    animation: ${opacity} 1s backwards;
     >div{
       width: 100%;
       max-width: 400px;

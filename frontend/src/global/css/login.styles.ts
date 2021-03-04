@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { opacity } from '../animations/animations';
 
 export const LoginContainer = styled.main`
   width: 100vw;
@@ -21,6 +22,7 @@ export const LoginContainer = styled.main`
     justify-content: space-around;
     align-items: center;
     padding: 20px;
+    animation: ${opacity} 1s backwards;
     @media(max-width: 600px){
       justify-content: space-between;
     }
