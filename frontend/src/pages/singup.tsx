@@ -6,9 +6,11 @@ import React, { ChangeEvent, useState } from 'react';
 import Img from 'react-svg-inline';
 import axios from 'axios';
 
-import { Chip, Input, MenuItem, Select, Step, StepLabel, Stepper, Theme, ThemeProvider, useTheme } from '@material-ui/core';
+import { Chip, CircularProgress, Input, MenuItem, Select, Snackbar, Step, StepLabel, Stepper, Theme, ThemeProvider, useTheme } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 
 import { SingupContainer } from '../global/css/singup.styles';
+import notifications from '../global/themes/notifications';
 import favicon from '../global/assets/ts/favicon';
 import stepper from '../global/themes/stepper';
 import eggs from '../global/assets/ts/eggs';
@@ -31,7 +33,6 @@ const techs = [
   'React Native',
   'Node.js',
   'ReactJS',
-  'JavaScript',
   'Elixir',
   'Next.js',
   'Nest.js',
@@ -64,11 +65,17 @@ const Singup = () => {
 
   const [visiblePassword, setVisiblePassword] = useState('password');
   const [emailFocus, setEmailFocus] = useState(false);
+
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [job, setJob] = useState('Job');
+
+  const [loading, setLoading] = useState(false);
+
+  const [openValidation, setOpenValidation] = useState(false);
+  const [openError, setOpenError] = useState(false);
 
   const theme = useTheme();
 
@@ -92,16 +99,24 @@ const Singup = () => {
   const onCreateAccount = async () => {
     if (job !== 'Job' || arrayTechs.length !== 0) {
       try {
+        setLoading(true);
         const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVICE}api/users`, {
           name,
           email,
           password,
           job,
           techs: arrayTechs,
-        }); 
-        console.log(response);
+        });
+        setTimeout(() => {
+          setLoading(false);
+          if (response.data.error) {
+            setOpenValidation(true);
+          };
+        }, 3000);
       } catch (error) {
-        
+        console.log(error);
+        setLoading(false);
+        setOpenError(true);
       }
     }
   };
@@ -225,7 +240,7 @@ const Singup = () => {
                   </div>
                 </div>
                 <footer>
-                  <button>Finish</button>
+                  <button>{loading ? <CircularProgress /> : "Finish"}</button>
                   <button type='button' onClick={() => setStep(0)}>Voltar</button>
                   <div>
                     <Link href='/login'>Log in to your account</Link>
@@ -235,6 +250,18 @@ const Singup = () => {
           }
         </ThemeProvider>
       </main>
+      <ThemeProvider theme={notifications}>
+        <Snackbar open={openValidation} autoHideDuration={6000} onClose={() => setOpenValidation(false)}>
+          <Alert onClose={() => setOpenValidation(false)} severity='warning'>
+            Email is already registered
+            </Alert>
+        </Snackbar>
+        <Snackbar open={openError} autoHideDuration={6000} onClose={() => setOpenError(false)}>
+          <Alert onClose={() => setOpenValidation(false)} severity='error'>
+            Something went wrong
+            </Alert>
+        </Snackbar>
+      </ThemeProvider>
       <div>
         <Img svg={eggs} />
       </div>

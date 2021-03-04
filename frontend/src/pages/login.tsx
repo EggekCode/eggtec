@@ -1,7 +1,8 @@
+import { FC, FormEvent, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { FC, useState } from 'react';
+import axios from 'axios';
 
 import Img from 'react-svg-inline';
 
@@ -17,12 +18,21 @@ const Home: FC = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
+  const onLogin = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVICE}api/sessions`, {
+      email,
+      password,
+    }); 
+    console.log(response.data);
+  };
+
   return (
     <LoginContainer>
       <Head>
         <title>Eggtec | Login</title>
       </Head>
-      <form>
+      <form onSubmit={onLogin}>
         <header>
           <div>
             <Img svg={favicon} />

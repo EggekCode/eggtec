@@ -7,6 +7,7 @@ export const SingupContainer = styled.main`
   background: linear-gradient(87deg, rgba(17,17,28,1) 0%, rgba(50,50,75,1) 100%);
   display: grid;
   grid-template-columns: 60vw 40vw;
+  overflow: auto;
   @media(max-width: 768px) {
     display: block;
   };
@@ -184,6 +185,26 @@ export const SingupContainer = styled.main`
         border: 2px solid transparent;
         :hover{
           background: ${props => props.theme.colors.ton};
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        >div{
+          width: 20px!important;
+          padding: 0px!important;
+          height: 20px!important;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          svg{
+            width: 20px;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            circle{
+              stroke: #FFF!important;
+            }
+          }
         }
       }
       button:nth-child(2){

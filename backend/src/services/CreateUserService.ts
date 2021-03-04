@@ -26,7 +26,7 @@ export default class CreateUserService {
     const checkUserExists = await Users.findOne({ email });
 
     if (checkUserExists) {
-      throw new Error('Usuário já cadastrado.');
+      throw new Error('Email já está cadastrado.');
     }
 
     const passwordHash = await hash(password, 8);

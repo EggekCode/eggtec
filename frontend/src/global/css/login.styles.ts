@@ -8,6 +8,7 @@ export const LoginContainer = styled.main`
   display: grid;
   grid-template-columns: 60vw 40vw;
   background: rgb(17,17,28);
+  overflow: auto;
   background: linear-gradient(87deg, rgba(17,17,28,1) 0%, rgba(50,50,75,1) 100%);
   @media(max-width: 768px){
     display: block;
