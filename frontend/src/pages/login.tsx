@@ -31,6 +31,7 @@ const Home: FC = () => {
     <LoginContainer>
       <Head>
         <title>Eggtec | Login</title>
+        <link rel='manifest' href='/manifest.json' />
       </Head>
       <form onSubmit={onLogin}>
         <header>

@@ -130,6 +130,7 @@ const Singup = () => {
     <SingupContainer>
       <Head>
         <title>Eggtec | Sing up</title>
+        <link rel='manifest' href='/manifest.json' />
       </Head>
       <main>
         <ThemeProvider theme={stepper}>
